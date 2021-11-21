@@ -32,6 +32,8 @@ import androidx.preference.SwitchPreference;
 import org.lineageos.settings.R;
 import org.lineageos.settings.utils.FileUtils;
 import org.lineageos.settings.display.KcalUtils;
+import android.app.ActionBar;
+import android.app.Activity;
 
 public class KcalSettingsFragment extends PreferenceFragment implements
         OnPreferenceChangeListener {
@@ -51,7 +53,10 @@ public class KcalSettingsFragment extends PreferenceFragment implements
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.kcal_settings);
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        final ActionBar actionBar = getActivity().getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         mKcalSwitchPreference = (SwitchPreference) findPreference("kcal_enable");

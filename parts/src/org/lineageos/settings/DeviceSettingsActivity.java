@@ -16,14 +16,15 @@
 
 package org.lineageos.settings;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.collapsingtoolbar.R;
 
 import androidx.preference.ListPreference;
 
-public class DeviceSettingsActivity extends Activity {
+public class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,12 @@ public class DeviceSettingsActivity extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Fragment fragment = getFragmentManager().findFragmentById(android.R.id.content);
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.content_frame);
         DeviceSettingsFragment deviceSettingsFragment;
         if (fragment == null) {
             deviceSettingsFragment = new DeviceSettingsFragment();
             getFragmentManager().beginTransaction()
-                    .add(android.R.id.content, deviceSettingsFragment)
+                    .add(R.id.content_frame, deviceSettingsFragment)
                     .commit();
         }
     }
