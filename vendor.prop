@@ -234,4 +234,4 @@ persist.vendor.delta_time.enable=true
 
 # Chipset
 ro.soc.manufacturer=Qualcomm
-ro.soc.model=SM6125
+ro.soc.model=trinket
